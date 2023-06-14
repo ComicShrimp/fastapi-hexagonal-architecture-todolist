@@ -9,6 +9,8 @@ packages = [{include = "backend"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 fastapi = "^0.97.0"
+uvicorn = "^0.22.0"
+gunicorn = "^20.1.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.3.0"

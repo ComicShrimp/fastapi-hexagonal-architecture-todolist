@@ -1,0 +1,15 @@
+version: "3.4"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./docker/backend.dockerfile
+    container_name: todo_list
+    restart: unless-stopped
+    ports:
+      - ${DOCKER_WEB_PORT-7000}:80
+    volumes:
+      - .:/usr/src/app:z
+    environment:
+      MODULE_NAME: backend.main
+    command: bash /start-reload.sh
