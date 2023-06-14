@@ -1,4 +1,4 @@
-FROM python:3.11 as builder
+FROM python:3.11-slim-buster as builder
 
 RUN pip install poetry==1.5
 
