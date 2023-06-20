@@ -23,11 +23,11 @@ COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 
 WORKDIR /app
 
-COPY ./ ./
+COPY ./backend ./backend
 
-RUN cat ./scripts/web-prestart.sh > /prestart.sh
-RUN cat ./scripts/web-start-reload.sh > /start-reload.sh
-RUN cat ./scripts/production-web-start.sh > /web-start.sh
-RUN cat ./backend/gunicorn_conf.py > /gunicorn_conf.py
+COPY ./scripts/web-prestart.sh /prestart.sh
+COPY ./scripts/web-start-reload.sh /start-reload.sh
+COPY ./scripts/production-web-start.sh /web-start.sh
+COPY ./backend/gunicorn_conf.py /gunicorn_conf.py
 
 CMD ["bash", "/web-start.sh"]

@@ -9,7 +9,9 @@ services:
     ports:
       - ${DOCKER_WEB_PORT-7000}:80
     volumes:
-      - .:/user/src/app:z
+      - ./backend:/app/backend:z
     environment:
       MODULE_NAME: backend.api.entrypoint
+    env_file:
+      - .env
     command: bash /start-reload.sh
