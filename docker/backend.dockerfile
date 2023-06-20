@@ -9,14 +9,14 @@ ENV POETRY_CACHE_DIR="/tmp/poetry_cache"
 
 WORKDIR /app
 
-COPY pyproject.toml poetry.lock ./
+COPY ./pyproject.toml ./poetry.lock ./
 
 RUN --mount=type=cache,target=$POETRY_CACHE_DIR poetry install --no-root
 
 
 FROM python:3.11-slim-buster as runtime
 
-ENV VIRTUAL_ENV=/app/.venv
+ENV VIRTUAL_ENV="/app/.venv"
 ENV PATH="/app/.venv/bin:$PATH"
 
 COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
