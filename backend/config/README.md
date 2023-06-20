@@ -1,0 +1,1 @@
+Camada onde será realizada as configurações do sistema e a injenção de dependências.
