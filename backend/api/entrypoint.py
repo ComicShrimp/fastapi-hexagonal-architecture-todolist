@@ -3,6 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from backend.config.main import container, settings
 
+from .controllers import health_router
+
 # FastAPI app
 app = FastAPI(
     title="Todo list API",
@@ -17,9 +19,11 @@ app.container = container  # type: ignore
 
 
 # Routes
-@app.get("/")
-async def root() -> dict[str, str]:
-    return {"message": "Hello World!"}
+app.include_router(
+    prefix="/v1/health",
+    router=health_router,
+    tags=["Health"],
+)
 
 
 # Middleware
